@@ -16,8 +16,7 @@
 
 namespace device_supervisor {
 
-class Target
-{
+class Target {
 public:
     Target();
 
@@ -45,7 +44,7 @@ public:
     * \param _sender Message provider
     * \param _event String error description
     */
-    void OnConnectionLost(const void *_sender, const IoT::MQTT::ConnectionLostEvent& _event);
+    void OnConnectionLost(const void* _sender, const IoT::MQTT::ConnectionLostEvent& _event);
 
 private:
     /** Connect to data base */

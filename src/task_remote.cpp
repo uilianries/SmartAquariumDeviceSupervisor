@@ -6,7 +6,7 @@
 namespace device_supervisor {
 
 TaskRemote::TaskRemote(std::unique_ptr<IoT::MQTT::MQTTClient>& client, Target& target)
-: Task(client, target)
+    : Task(client, target)
 {
 }
 

@@ -9,9 +9,9 @@
 namespace device_supervisor {
 
 Task::Task(std::unique_ptr<IoT::MQTT::MQTTClient>& client, Target& target)
-: Poco::Task("SupervisorTask")
-, client_(client)
-, target_(target)
+    : Poco::Task("SupervisorTask")
+    , client_(client)
+    , target_(target)
 {
     Logger::instance().information("Create Task");
 }
@@ -30,11 +30,10 @@ void Task::runTask()
     client_->messageArrived += Poco::delegate(&target_, &Target::OnMessageArrived);
 
     Logger::instance().information("Subscribe topics");
-    client_->subscribeMany({{"smartaquarium/actuator/feeder/level", IoT::MQTT::QoS::AT_LEAST_ONCE},
-                            {"smartaquarium/sensor/ph/level", IoT::MQTT::QoS::AT_LEAST_ONCE},
-                            {"smartaquarium/sensor/temperature/level", IoT::MQTT::QoS::AT_LEAST_ONCE},
-                            {"smartaquarium/sensor/light/level", IoT::MQTT::QoS::AT_LEAST_ONCE}});
+    client_->subscribeMany({ { "smartaquarium/actuator/feeder/level", IoT::MQTT::QoS::AT_LEAST_ONCE },
+        { "smartaquarium/sensor/ph/level", IoT::MQTT::QoS::AT_LEAST_ONCE },
+        { "smartaquarium/sensor/temperature/level", IoT::MQTT::QoS::AT_LEAST_ONCE },
+        { "smartaquarium/sensor/light/level", IoT::MQTT::QoS::AT_LEAST_ONCE } });
 }
 
 } // namespace device_supervisor
-

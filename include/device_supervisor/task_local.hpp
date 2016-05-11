@@ -8,8 +8,7 @@
 
 namespace device_supervisor {
 
-class TaskLocal : public Task
-{
+class TaskLocal : public Task {
 public:
     TaskLocal(std::unique_ptr<IoT::MQTT::MQTTClient>& client, Target& target);
 

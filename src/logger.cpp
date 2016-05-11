@@ -6,8 +6,8 @@
 namespace device_supervisor {
 
 Logger::Logger()
- : fileChannel(new Poco::FileChannel)
- , patternFormatter(new Poco::PatternFormatter)
+    : fileChannel(new Poco::FileChannel)
+    , patternFormatter(new Poco::PatternFormatter)
 {
     fileChannel->setProperty("path", "/var/tmp/device-supervisor.log");
     fileChannel->setProperty("rotation", "10 M");

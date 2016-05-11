@@ -15,10 +15,9 @@ namespace device_supervisor {
 /**
  * \brief Create Application Logger
  */
-class Logger
-{
+class Logger {
 public:
-   /**
+    /**
     * \brief Copy constructor not allowed
     */
     Logger(const Logger&) = delete;

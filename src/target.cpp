@@ -13,8 +13,8 @@
 namespace device_supervisor {
 
 Target::Target()
-: sqlite_session_(Poco::Data::SessionFactory::instance().create("SQLite", "/var/www/html/db/SmartAquarium.sqlite"))
-, sentinel_ { true }
+    : sqlite_session_(Poco::Data::SessionFactory::instance().create("SQLite", "/var/www/html/db/SmartAquarium.sqlite"))
+    , sentinel_{ true }
 {
     Logger::instance().information("Connect on data base");
     message_arrived_consumer_.reset(new std::thread(std::bind(&Target::ProcessMesssageQueue, this)));
@@ -29,8 +29,8 @@ Target::~Target()
 
 void Target::ProcessMesssageQueue()
 {
-    while(sentinel_) {
-        std::unique_lock<std::mutex> lock{message_arrived_mutex_};
+    while (sentinel_) {
+        std::unique_lock<std::mutex> lock{ message_arrived_mutex_ };
         while (message_queue_.empty()) {
             message_queue_condition_.wait(lock);
             if (!sentinel_) {
@@ -46,12 +46,12 @@ void Target::ProcessMesssageQueue()
 
 void Target::ProcessArrivedMessage(const IoT::MQTT::MessageArrivedEvent& _event)
 {
-    const std::regex expression(R"(^smartaquarium\/((\bsensor\b)|(\bactuator\b))\/(\w+)\/level$)");
+    const std::regex expression(R "(^smartaquarium\/((\bsensor\b)|(\bactuator\b))\/(\w+)\/level$)");
     std::smatch smatch;
-    std::string topic{_event.topic};
+    std::string topic{ _event.topic };
     std::string table;
     while (std::regex_search(topic, smatch, expression)) {
-        for (const auto &sm : smatch) {
+        for (const auto& sm : smatch) {
             table = sm;
         }
         topic = smatch.suffix().str();
@@ -73,12 +73,12 @@ void Target::OnMessageArrived(const void*, const IoT::MQTT::MessageArrivedEvent&
     std::lock_guard<std::mutex> lock(message_arrived_mutex_);
     auto wake = message_queue_.empty();
     message_queue_.push(_event);
-    if ( wake ) {
+    if (wake) {
         message_queue_condition_.notify_one();
     }
 }
 
-void Target::OnConnectionLost(const void *_sender, const IoT::MQTT::ConnectionLostEvent& _event)
+void Target::OnConnectionLost(const void* _sender, const IoT::MQTT::ConnectionLostEvent& _event)
 {
     std::ignore = _sender;
     std::ostringstream oss;

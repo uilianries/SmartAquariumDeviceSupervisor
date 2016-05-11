@@ -16,7 +16,8 @@
 
 namespace device_supervisor {
 
-int Application::main(const ArgVec &) {
+int Application::main(const ArgVec&)
+{
     Poco::Data::SQLite::Connector::registerConnector();
 
     Poco::TaskManager taskManager;
@@ -38,4 +39,3 @@ int Application::main(const ArgVec &) {
 }
 
 } // namespace device_supervisor
-

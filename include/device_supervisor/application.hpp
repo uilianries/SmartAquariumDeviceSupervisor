@@ -13,8 +13,7 @@ namespace device_supervisor {
 /**
  * \brief Application
  */
-class Application : public Poco::Util::ServerApplication
-{
+class Application : public Poco::Util::ServerApplication {
 protected:
     /**
      * \brief Execute main application
@@ -23,6 +22,5 @@ protected:
 };
 
 } // namespace device_supervisor
-
 
 #endif // DEVICE_SUPERVISOR_APP_HPP

@@ -16,13 +16,11 @@ using FactoryArguments = IoT::MQTT::MQTTClientFactory::FactoryArguments;
 
 namespace device_supervisor {
 
-class Task : public Poco::Task
-{
+class Task : public Poco::Task {
 public:
     Task(std::unique_ptr<IoT::MQTT::MQTTClient>& client, Target& target);
 
 protected:
-
     virtual FactoryArguments getArguments() const = 0;
 
     void runTask() override;
@@ -33,6 +31,5 @@ private:
 };
 
 } // namespace device_supervisor
-
 
 #endif // DEVICE_SUPERVISOR_TASK_HPP
