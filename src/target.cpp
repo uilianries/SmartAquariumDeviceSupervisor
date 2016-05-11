@@ -46,7 +46,7 @@ void Target::ProcessMesssageQueue()
 
 void Target::ProcessArrivedMessage(const IoT::MQTT::MessageArrivedEvent& _event)
 {
-    const std::regex expression(R "(^smartaquarium\/((\bsensor\b)|(\bactuator\b))\/(\w+)\/level$)");
+    const std::regex expression(R"(^smartaquarium\/((\bsensor\b)|(\bactuator\b))\/(\w+)\/level$)");
     std::smatch smatch;
     std::string topic{ _event.topic };
     std::string table;
