@@ -1,0 +1,21 @@
+#
+# \brief Default Travis for project
+# \author Uilian Ries <uilianries@gmail.com>
+#
+dist: trusty
+
+language: cpp
+
+compiler: gcc
+
+before_install:
+  - git clone https://github.com/uilianries/3rdParty.git && cd 3rdParty && sudo dpkg -i libpoco_1.7-amd64.deb && cd ..
+
+script:
+  - mkdir build && cd build && cmake .. && make
+  - sudo make install
+
+branches:
+  only:
+    - master
+    - develop
