@@ -26,7 +26,7 @@ install:
 
 script:
   - mkdir build && cd build
-  - conan install ..
+  - conan install .. -s compiler=gcc -s compiler.version=5.3 -s compiler.libcxx=libstdc++ --build=missing
   - cmake .. && make
   - sudo make install
 
