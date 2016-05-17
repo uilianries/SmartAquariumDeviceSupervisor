@@ -4,13 +4,16 @@ project(DeviceSupervisor CXX)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Werror -Wextra -Wshadow")
 set(SERVICE_SCRIPT smartaquarium-device-supervisor)
 
+include(build/conanbuildinfo.cmake)
+conan_basic_setup()
+
 include_directories(include)
 
 file(GLOB SOURCE_FILES
         src/*.cpp)
 
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
-target_link_libraries(${CMAKE_PROJECT_NAME} IoTMQTTClient Paho pthread ssl crypto PocoFoundation PocoData PocoDataSQLite PocoUtil)
+target_link_libraries(${CMAKE_PROJECT_NAME} IoTMQTTClient Paho pthread ssl crypto ${CONAN_LIBS})
 
 install(TARGETS ${CMAKE_PROJECT_NAME}
   DESTINATION ${CMAKE_INSTALL_PREFIX}/bin

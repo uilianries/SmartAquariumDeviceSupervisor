@@ -19,12 +19,15 @@ before_install:
   - git clone https://github.com/uilianries/3rdParty.git && cd 3rdParty && sudo dpkg -i libpoco_1.7-amd64.deb && cd ..
   - git clone https://github.com/uilianries/MQTTClient.git && cd MQTTClient && mkdir build && cd build && cmake .. -DTESTS=OFF -DSAMPLES=OFF && make && sudo make install
   - cd ../.. && rm -rf MQTTClient
+  - sudo pip install conan
 
 install:
   if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
 
 script:
-  - mkdir build && cd build && cmake .. && make
+  - mkdir build && cd build
+  - conan install ..
+  - cmake .. && make
   - sudo make install
 
 branches:
