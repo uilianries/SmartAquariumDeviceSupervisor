@@ -13,7 +13,7 @@ file(GLOB SOURCE_FILES
         src/*.cpp)
 
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
-target_link_libraries(${CMAKE_PROJECT_NAME} IoTMQTTClient Paho pthread ssl crypto ${CONAN_LIBS})
+target_link_libraries(${CMAKE_PROJECT_NAME} IoTMQTTClient Paho ${CONAN_LIBS})
 
 install(TARGETS ${CMAKE_PROJECT_NAME}
   DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
