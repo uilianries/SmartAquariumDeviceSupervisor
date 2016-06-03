@@ -2,7 +2,7 @@
 # \brief Default Travis for project
 # \author Uilian Ries <uilianries@gmail.com>
 #
-dist: xenial
+dist: trusty
 
 language: cpp
 
