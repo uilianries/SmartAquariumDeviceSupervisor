@@ -25,14 +25,14 @@ before_install:
   - cmake .. -DTESTS=OFF -DSAMPLES=OFF
   - cmake --build .
   - sudo make install
-  - cd ../.. && rm -rf MQTTClient
+  - cd ../.. 
 
 install:
   if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
 
 script:
   - mkdir build && cd build
-  - conan install .. -s compiler=gcc -s compiler.version=5.3 -s compiler.libcxx=libstdc++ --build=missing
+  - conan install ..
   - cmake ..
   - cmake --build .
   - sudo make install
