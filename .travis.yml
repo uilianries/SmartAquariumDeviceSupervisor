@@ -2,18 +2,11 @@
 # \brief Default Travis for project
 # \author Uilian Ries <uilianries@gmail.com>
 #
-dist: trusty
+dist: xenial
 
 language: cpp
 
 compiler: gcc
-
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - g++-5
 
 before_install:
   - sudo pip install conan
@@ -26,9 +19,6 @@ before_install:
   - cmake --build .
   - sudo make install
   - cd ../.. 
-
-install:
-  if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
 
 script:
   - mkdir build && cd build
