@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <server>m11.cloudmqtt.com</server>
+    <port>15347</port>
+    <clientid>WebSmartAquariumDeviceSupervisor</clientid>
+    <username>device_supervisor</username>
+    <password>devicesupervisor</password>
+</root>

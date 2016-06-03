@@ -11,7 +11,7 @@
 #include <IoT/MQTT/MQTTClient.h>
 
 #include "device_supervisor/target.hpp"
-#include "device_supervisor/task_remote.hpp"
+#include "device_supervisor/task_configuration.hpp"
 #include "device_supervisor/logger.hpp"
 
 namespace device_supervisor {
@@ -25,7 +25,7 @@ int Application::main(const ArgVec&)
     device_supervisor::Target target;
 
     Logger::instance().information("Start Task Manager");
-    taskManager.start(new device_supervisor::TaskRemote(client, target));
+    taskManager.start(new device_supervisor::TaskConfiguration(client, target));
 
     Logger::instance().information("Wait For Termination");
     waitForTerminationRequest();
